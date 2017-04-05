@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://guofengcrazy.github.io">
-  <title>javascript��call��apply��bind֮�������� | 阿锋疯了</title>
+  <title>javascript中call，apply，bind之间的区别 | 阿锋疯了</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ժҪ: ���乲ͬ�㼰������">
+  <meta name="description" content="摘要: 论其共同点及区别。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript��call��apply��bind֮��������">
+<meta property="og:title" content="javascript中call，apply，bind之间的区别">
 <meta property="og:url" content="http://guofengcrazy.github.io/2017/04/05/s/index.html">
 <meta property="og:site_name" content="阿锋疯了">
-<meta property="og:description" content="ժҪ: ���乲ͬ�㼰������">
-<meta property="og:updated_time" content="2017-04-05T07:55:43.768Z">
+<meta property="og:description" content="摘要: 论其共同点及区别。">
+<meta property="og:updated_time" content="2017-04-05T07:59:13.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript��call��apply��bind֮��������">
-<meta name="twitter:description" content="ժҪ: ���乲ͬ�㼰������">
+<meta name="twitter:title" content="javascript中call，apply，bind之间的区别">
+<meta name="twitter:description" content="摘要: 论其共同点及区别。">
   
     <link rel="alternative" href="/atom.xml" title="阿锋疯了" type="application/atom+xml">
   
@@ -164,7 +164,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      javascript��call��apply��bind֮��������
+      javascript中call，apply，bind之间的区别
     </h1>
   
 
@@ -177,57 +177,57 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>ժҪ: ���乲ͬ�㼰������<br><a id="more"></a><br>   �������Ƕ�֪������js�������߶��Ǹı�this��ָ�������ģ���˵����֮ǰ�������ܽ�һ�����ߵ�����֮����1�����������ı亯����this������ָ���ġ�2����һ����������thisҪָ���Ķ�����3�����������ú����������Ρ���ô���ǵ������������ģ��ȿ�һ�����ӡ�<br>    <code><br>          var lxa = {<br>                                name : “¬����”,<br>                                gender : “��”,<br>                                age : 33,<br>                                message : function() {<br>                                        alert(this.name + “ , “ + this.gender + “ ,����” + this.age);<br>                                }<br>                        }<br>                        var an = {<br>                                name : “����”,<br>                                gender : “Ů”,<br>                                age : 14<br>                        }<br>                        xw.say();<br>    </code><br>    ���δ�����ִ�к��� ¬�������У�����33�� ��������������lxa��say������ʾan�������أ����ǿ�������д��</p>
-<pre><code>1. ��call();
+        <p>摘要: 论其共同点及区别。<br><a id="more"></a><br>   　　我们都知道，在js中这三者都是改变this的指向对象的,那么他们都有什么相似和区别呢，在说区别之前，我先说一下他们三个的相似之处。<br>   　　　　　１.都是改变this指向对象的。<br>   　　　　　２.第一个参数都是this要指向的对象。<br>      我们再来看看他们的不同之处，首先看如下代码<br>    <code><br>          var lxa = {<br>                                name : “卢锡安”,<br>                                gender : “男”,<br>                                age : 33,<br>                                message : function() {<br>                                        alert(this.name + “ , “ + this.gender + “ ,今年” + this.age);<br>                                }<br>                        }<br>                        var an = {<br>                                name : “安妮”,<br>                                gender : “女”,<br>                                age : 14<br>                        }<br>                        xw.say();<br>    </code><br>    这段代码呢执行后是 卢锡安，男，今年33， 但是我们如何用lxa的say方法显示an的数据呢，我们可以这样写。</p>
+<pre><code>1. 用call();
 &lt;code&gt;
    lxa.message.call(an);
 &lt;/code&gt;
-2.��apply();
+2.用apply();
 &lt;code&gt;
   lxa.message.call(an);
 &lt;/code&gt;
-3.��bind();
+3.用bind();
 &lt;code&gt;
  lxa.message.call(an)();
 &lt;/code&gt;
 
-���ǿ��Կ���call������apply�����Ժ�����ֱ�ӵ��ã���bind��Ȼ�Ƿ���һ��������  ��ôcall��apply������ʲô������ ���ǰ�����������һ�� �ٿ�һ�¡�
+我们可以看到call方法和apply方法对函数是直接调用，而bind仍然是返回一个函数，  那么call和apply到底有什么区别呢 我们把这个代码改一下 再看一下。
 
 &lt;code&gt;
           var lxa = {
-                                name : &quot;¬����&quot;,
-                                gender : &quot;��&quot;,
+                                name : &quot;卢锡安&quot;,
+                                gender : &quot;男&quot;,
                                 age : 33,
                                 message : function(hobby,work) {
-                                        alert(this.name + &quot; , &quot; + this.gender +&quot;��&quot;+ &quot; ,����&quot; + this.age+&quot;,&quot;+&quot;������&quot;+this.hobby+&quot;,&quot;+&quot;����&quot;+this.work);
+                                        alert(this.name + &quot; , &quot; + this.gender +&quot;岁&quot;+ &quot; ,今年&quot; + this.age+&quot;,&quot;+&quot;爱好是&quot;+this.hobby+&quot;,&quot;+&quot;工作&quot;+this.work);
                                 }
                         }
                         var an = {
-                                name : &quot;����&quot;,
-                                gender : &quot;Ů&quot;,
+                                name : &quot;安妮&quot;,
+                                gender : &quot;女&quot;,
                                 age : 14
                         }
                         xw.say();
     &lt;/code&gt;
 
-���ǿ������������������������ģ����ǿ�������д��
+我们看到这个例子是有两个参数的，我们可以这样写。
 
-1.��call()������
+1.用call()方法。
  &lt;code&gt;
       lxa.message.call(an,&apos;hobby&apos;,&apos;work&apos;);
  &lt;/code&gt;
-2.��apply()������
+2.用apply()方法。
  &lt;code&gt;
     lxa.message.apply(an,[&apos;hobby&apos;,&apos;work&apos;])
  &lt;/code&gt;
 
- ���ϣ�call������message������һһ��Ӧ�ģ���apply�ڶ���������һ�����飬���Ƕ���֮�������Ĳ��ࡣ��bind�أ�����������
+ 如上，call参数和message方法是一一对应的，但apply第二个参数是一个数组，这是二者之间最大的差距。而bind呢？我们来看。
 
- 1.������call����һ����
+ 1.可以像call（）一样，
   &lt;code&gt;
     lxa.message.bind(an,hobby,work)();
   &lt;/code&gt;
- 2.����Ҳ������������ʱ���Σ�
+ 2.我们也可以在其调用时传参，
     &lt;code&gt;
     lxa.message.bind(an)(hobby,work);
     &lt;/code&gt;
@@ -277,11 +277,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/��־/" class="article-tag-list-link color4">��־</a>
+        			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/����Ŀ¼/" class="article-tag-list-link color2">����Ŀ¼</a>
+        			<a href="/categories/二级目录/" class="article-tag-list-link color5">二级目录</a>
         		</li>
       		
 		</ul>
