@@ -158,6 +158,56 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-nba" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/02/nba/">nba</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/02/nba/" class="archive-article-date">
+  	<time datetime="2018-03-02T06:41:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/02/nba/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-vue" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -527,87 +577,6 @@
 
 
   
-    <article id="post-paixu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/31/paixu/">冒泡，快速，插入排序</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/31/paixu/" class="archive-article-date">
-  	<time datetime="2016-12-31T01:31:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要: 一些关于排序的算法。.</p>
-<p>1.冒泡排序.<br>      <code><br>　　　　　　　　function bubbleSort(ary) {<br>　　　　　　　　　　var len = ary.length, flag = null;<br> 　　　　　　　　　　if (len &gt; 1) {<br>　　　　　　　　　　　　for (var i = 0; i &lt; len - 1; i++) {<br>　　　　　　　　　　　　　flag = false;//位置变更标识符,可以优化性能<br>　　　　　　　　　　　　　　for (var j = 0; j &lt; len - 1 - i; j++) {<br> 　　　　　　　　　　　　　　　　　　 if (ary[j] &gt; ary[j + 1]) {<br> 　　　　　　　　　　　　　　　　　　var temp = ary[j];<br>   　　　　　　　　　　　　　　　　　 ary[j] = ary[j + 1];<br>　　　　　　　　　　　　　　　　　　　ary[j + 1] = temp;<br>　　　　　　　　　　　　　　　　　　　flag = true;//有位置交换则改变flag的值<br>　　　　　　　　　　　　　　　　　　 }<br>  　　　　　　　　　　　　　　　　 }<br> 　　　　　　　　　　　if (!flag){//检测到上一轮已经没有过位置变更,就说明排序已经完成<br> 　　　　　　　　　　　 break;<br> 　　　　　　　　　　　　　　 }<br> 　　　　　　　　　　　　 }<br>　　　　　　　　　　}<br>　　　　　　　　　　　　　　return ary;<br>　　　　　　　 }<br> 　　　　　　　　 var ary1 = [111, 99, 12, 32, 78, 88, 34];<br> 　　　　　　　　 console.log(bubbleSort(ary1));<br>　　　　　</code></p>
-<p>2.插入排序。<br>   　　　　<br>    <code><br>　　　　　 function insertSort(ary) {<br>　　　　　　　　var len = ary.length;<br>　　　　　　　　if (len &gt; 1) {<br>　　　　　　　　　　for (var i = 1; i &lt; len; i++) {<br>　　　　　　　　　　　　　if (ary[i] &lt; ary[i - 1]) {  //当前项小于前一项时向前插入<br>  　　　　　　　　　　　　　var cur = ary[i], j = i - 1; //保存第i项值,找到前一项索引<br>　　　　　　　　　　　　　　while(j&gt;= 0 &amp;&amp; cur &lt; ary[j]){//前一项有且第i项值小于前一项<br> 　　　　　　　　　　　　　　　　　ary[j + 1] = ary[j];     //当前比较项赋值为前一项的值<br>　　　　　　　　　　　　　　　　　　j–;                     //继续向前查找<br>　　　　　　　　　　　　　　　　}<br>　　　　　　　　　　　　　　　ary[j + 1] = cur;           //将第i项插入到当前位置<br>　　　　　　　　　　　　}<br>　　　　　　　　　　 }<br>　　　　　　　　 }<br>　　　　　　　return ary;<br>　　　　　　 }<br>　　　　　　　　　　　　　var ary2 = [111, 99, 12, 32, 78, 88, 34];<br>           </code></p>
-<p> 3.快速排序<br>        <code><br>　　　　　　　 function quickSort(ary) {<br>　　　　　　　　　 if (ary.length &lt;= 1) {<br>　　　　　　　　　　　　return ary;<br>　　　　　　　　　 }<br>　　　　　　　　　　 var midIndex = Math.floor(ary.length / 2);<br>　　　　　　　　　　 var minItem = ary.splice(midIndex, 1)[0];<br>　　　　　　　　　　var leftAry = [], rightAry = [];<br>　　　　　　　　　　for (var i = 0; i &lt; ary.length; i++) {<br>　　　　　　　　　　　　var cur = ary[i];<br>　　　　　　　　　　　　 cur &lt; minItem ? leftAry.push(cur) : rightAry.push(cur);<br>　　　　　　　　　　　}<br>　　　　　　　return quickSort(leftAry).concat(minItem, quickSort(rightAry));<br>　　　　　  }<br>　　　　　　　　　　 var ary3 = [111, 99, 12, 32, 78, 88, 34];<br>       </code></p>
-<p>以上。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/二级目录/" class="article-tag-list-link color5">二级目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/31/paixu/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -705,11 +674,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">html/css</a>
+                <a href="javascript:void(0)" class="js-tag color2">-javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">-javascript</a>
+                <a href="javascript:void(0)" class="js-tag color4">html/css</a>
               </li>
             
             <div class="clearfix"></div>
