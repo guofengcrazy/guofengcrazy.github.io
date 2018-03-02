@@ -178,12 +178,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>摘要: 一些关于排序的算法。.</p>
-<p>1.冒泡排序.<br>      <code><br>　　　　　　　　function bubbleSort(ary) {<br>　　　　　　　　　　var len = ary.length, flag = null;<br> 　　　　　　　　　　if (len &gt; 1) {<br>　　　　　　　　　　　　for (var i = 0; i &lt; len - 1; i++) {<br>　　　　　　　　　　　　　flag = false;//位置变更标识符,可以优化性能<br>　　　　　　　　　　　　　　for (var j = 0; j &lt; len - 1 - i; j++) {<br> 　　　　　　　　　　　　　　　　　　 if (ary[j] &gt; ary[j + 1]) {<br> 　　　　　　　　　　　　　　　　　　var temp = ary[j];<br>   　　　　　　　　　　　　　　　　　 ary[j] = ary[j + 1];<br>　　　　　　　　　　　　　　　　　　　ary[j + 1] = temp;<br>　　　　　　　　　　　　　　　　　　　flag = true;//有位置交换则改变flag的值<br>　　　　　　　　　　　　　　　　　　 }<br>  　　　　　　　　　　　　　　　　 }<br> 　　　　　　　　　　　if (!flag){//检测到上一轮已经没有过位置变更,就说明排序已经完成<br> 　　　　　　　　　　　 break;<br> 　　　　　　　　　　　　　　 }<br> 　　　　　　　　　　　　 }<br>　　　　　　　　　　}<br>　　　　　　　　　　　　　　return ary;<br>　　　　　　　 }<br> 　　　　　　　　 var ary1 = [111, 99, 12, 32, 78, 88, 34];<br> 　　　　　　　　 console.log(bubbleSort(ary1));<br>　　　　　</code></p>
-<p>2.插入排序。<br>   　　　　<br>    <code><br>　　　　　 function insertSort(ary) {<br>　　　　　　　　var len = ary.length;<br>　　　　　　　　if (len &gt; 1) {<br>　　　　　　　　　　for (var i = 1; i &lt; len; i++) {<br>　　　　　　　　　　　　　if (ary[i] &lt; ary[i - 1]) {  //当前项小于前一项时向前插入<br>  　　　　　　　　　　　　　var cur = ary[i], j = i - 1; //保存第i项值,找到前一项索引<br>　　　　　　　　　　　　　　while(j&gt;= 0 &amp;&amp; cur &lt; ary[j]){//前一项有且第i项值小于前一项<br> 　　　　　　　　　　　　　　　　　ary[j + 1] = ary[j];     //当前比较项赋值为前一项的值<br>　　　　　　　　　　　　　　　　　　j–;                     //继续向前查找<br>　　　　　　　　　　　　　　　　}<br>　　　　　　　　　　　　　　　ary[j + 1] = cur;           //将第i项插入到当前位置<br>　　　　　　　　　　　　}<br>　　　　　　　　　　 }<br>　　　　　　　　 }<br>　　　　　　　return ary;<br>　　　　　　 }<br>　　　　　　　　　　　　　var ary2 = [111, 99, 12, 32, 78, 88, 34];<br>           </code></p>
-<p> 3.快速排序<br>        <code><br>　　　　　　　 function quickSort(ary) {<br>　　　　　　　　　 if (ary.length &lt;= 1) {<br>　　　　　　　　　　　　return ary;<br>　　　　　　　　　 }<br>　　　　　　　　　　 var midIndex = Math.floor(ary.length / 2);<br>　　　　　　　　　　 var minItem = ary.splice(midIndex, 1)[0];<br>　　　　　　　　　　var leftAry = [], rightAry = [];<br>　　　　　　　　　　for (var i = 0; i &lt; ary.length; i++) {<br>　　　　　　　　　　　　var cur = ary[i];<br>　　　　　　　　　　　　 cur &lt; minItem ? leftAry.push(cur) : rightAry.push(cur);<br>　　　　　　　　　　　}<br>　　　　　　　return quickSort(leftAry).concat(minItem, quickSort(rightAry));<br>　　　　　  }<br>　　　　　　　　　　 var ary3 = [111, 99, 12, 32, 78, 88, 34];<br>       </code></p>
-<p>以上。</p>
-
+        <p>摘要: 一些关于排序的算法。.<br>
+        
+          <a class="article-more-a" href="/2016/12/31/paixu/#more">more >></a>
+        
       
 
       
@@ -260,12 +258,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>摘要: 关于搭建遇见的一些困难</p>
-<p>   在很久以前，就想用 Github Pages 建一个博客，于是就开始行动，当时选择的是 Github + Jkeyll ，昨天决定要重新做的时候也是用的 jekyll，但是遇到了很多无法解决的问题，比如说</p>
-<p> 在安装 Jekyll “gem install jekyll” 时报错了，上网查，原来是 gem 镜像的问题（Jekyll 是基于 Ruby 环境运行的），国外的镜像不能用，即使我再墙外也不行，上网查，最好换成国内的淘宝镜像。</p>
-<p> 换了淘宝的镜像之后，又报错了，上网查，原来是 Taobao Gem 源停止维护了，现在由 ruby-china 社区提供镜像服务。终于安装成功了，接下来就是建博客。</p>
-<p> 虽然工作量不大，但是被 Jekyll 折磨的心累，看了看其他的技术，本来用 Github Pages 建博就有很多方法，比如说 hexo ，而且 hexo 是基于 nodejs 环境的，于是毅然决然的转到了 hexo 党。果然没有失望，很快就做好了一个博客。</p>
-<p> 以上。</p>
-
+        
+          <a class="article-more-a" href="/2016/12/07/hello-1/#more">more >></a>
+        
       
 
       
@@ -341,11 +336,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>摘要:第一个文章。</p>
-<pre><code>一直想搭建一个github博客，之前由于电脑配置环境的问题。导致git无法顺利运行，只好手写然后一点点上传，相当麻烦。 最近终于决定要将其弄好，果然功夫不负有心人，一天时间不到，搭建完成，
-</code></pre><p> 以后我会在这里写一些工作上的心得，或者分享一些个人觉得不错的文章。</p>
-<p>以上。</p>
-
+        <p>摘要:第一个文章。<br>
+        
+          <a class="article-more-a" href="/2016/12/05/hello/#more">more >></a>
+        
       
 
       

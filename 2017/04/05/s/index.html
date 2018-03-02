@@ -8,19 +8,16 @@
   <link rel="dns-prefetch" href="http://guofengcrazy.github.io">
   <title>javascript中call，apply，bind之间的区别 | 阿锋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要: 论其共同点及区别。
-   　　我们都知道，在js中这三者都是改变this的指向对象的,那么他们都有什么相似和区别呢，在说区别之前，我先说一下他们三个的相似之处。   　　　　　１.都是改变this指向对象的。   　　　　　２.第一个参数都是this要指向的对象。      我们再来看看他们的不同之处，首先看如下代码              var lxa = {">
+  <meta name="description" content="摘要: 论其共同点及区别。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript中call，apply，bind之间的区别">
 <meta property="og:url" content="http://guofengcrazy.github.io/2017/04/05/s/index.html">
 <meta property="og:site_name" content="阿锋">
-<meta property="og:description" content="摘要: 论其共同点及区别。
-   　　我们都知道，在js中这三者都是改变this的指向对象的,那么他们都有什么相似和区别呢，在说区别之前，我先说一下他们三个的相似之处。   　　　　　１.都是改变this指向对象的。   　　　　　２.第一个参数都是this要指向的对象。      我们再来看看他们的不同之处，首先看如下代码              var lxa = {">
-<meta property="og:updated_time" content="2017-04-05T08:10:22.559Z">
+<meta property="og:description" content="摘要: 论其共同点及区别。">
+<meta property="og:updated_time" content="2018-03-02T06:47:12.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中call，apply，bind之间的区别">
-<meta name="twitter:description" content="摘要: 论其共同点及区别。
-   　　我们都知道，在js中这三者都是改变this的指向对象的,那么他们都有什么相似和区别呢，在说区别之前，我先说一下他们三个的相似之处。   　　　　　１.都是改变this指向对象的。   　　　　　２.第一个参数都是this要指向的对象。      我们再来看看他们的不同之处，首先看如下代码              var lxa = {">
+<meta name="twitter:description" content="摘要: 论其共同点及区别。">
   
     <link rel="alternative" href="/atom.xml" title="阿锋" type="application/atom+xml">
   
@@ -180,19 +177,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>摘要: 论其共同点及区别。</p>
-<p>   　　我们都知道，在js中这三者都是改变this的指向对象的,那么他们都有什么相似和区别呢，在说区别之前，我先说一下他们三个的相似之处。<br>   　　　　　１.都是改变this指向对象的。<br>   　　　　　２.第一个参数都是this要指向的对象。<br>      我们再来看看他们的不同之处，首先看如下代码<br>    <code><br>          var lxa = {<br>                                name : “卢锡安”,<br>                                gender : “男”,<br>                                age : 33,<br>                                message : function() {<br>                                        alert(this.name + “ , “ + this.gender + “ ,今年” + this.age);<br>                                }<br>                        }<br>                        var an = {<br>                                name : “安妮”,<br>                                gender : “女”,<br>                                age : 14<br>                        }<br>                        xw.say();<br>    </code><br>    这段代码呢执行后是 卢锡安，男，今年33， 但是我们如何用lxa的say方法显示an的数据呢，我们可以这样写。</p>
+        <p>摘要: 论其共同点及区别。<br>  <a id="more"></a><br>   　　我们都知道，在js中这三者都是改变this的指向对象的,那么他们都有什么相似和区别呢，在说区别之前，我先说一下他们三个的相似之处。<br>   　　　　　１.都是改变this指向对象的。<br>   　　　　　２.第一个参数都是this要指向的对象。<br>      我们再来看看他们的不同之处，首先看如下代码<br>    <code><br>          var lxa = {<br>                                name : “卢锡安”,<br>                                gender : “男”,<br>                                age : 33,<br>                                message : function() {<br>                                        alert(this.name + “ , “ + this.gender + “ ,今年” + this.age);<br>                                }<br>                        }<br>                        var an = {<br>                                name : “安妮”,<br>                                gender : “女”,<br>                                age : 14<br>                        }<br>                        xw.say();<br>    </code><br>    这段代码呢执行后是 卢锡安，男，今年33， 但是我们如何用lxa的say方法显示an的数据呢，我们可以这样写。</p>
 <pre><code>1. 用call();
 &lt;code&gt;
    lxa.message.call(an);
 &lt;/code&gt;
 2.用apply();
 &lt;code&gt;
-  lxa.message.call(an);
+  lxa.message.apply(an);
 &lt;/code&gt;
 3.用bind();
 &lt;code&gt;
- lxa.message.call(an)();
+ lxa.message.bind(an)();
 &lt;/code&gt;
 
 我们可以看到call方法和apply方法对函数是直接调用，而bind仍然是返回一个函数，  那么call和apply到底有什么区别呢 我们把这个代码改一下 再看一下。
@@ -357,7 +353,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/02/vue/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/02/26/vue/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
