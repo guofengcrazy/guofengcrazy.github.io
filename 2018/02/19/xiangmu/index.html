@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://guofengcrazy.github.io">
-  <title>阿锋</title>
+  <title>shaixuan | 阿锋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="爱打篮球的前端狗，爱做点饭的游戏迷。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阿锋">
-<meta property="og:url" content="http://guofengcrazy.github.io/about/index.html">
+  <meta name="description" content="基于vue的筛选功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shaixuan">
+<meta property="og:url" content="http://guofengcrazy.github.io/2018/02/19/xiangmu/index.html">
 <meta property="og:site_name" content="阿锋">
-<meta property="og:description" content="爱打篮球的前端狗，爱做点饭的游戏迷。">
-<meta property="og:updated_time" content="2018-03-01T09:10:16.594Z">
+<meta property="og:description" content="基于vue的筛选功能">
+<meta property="og:image" content="http://img3.imgtn.bdimg.com/it/u=4050062348,563993855&fm=214&gp=0.jpg">
+<meta property="og:updated_time" content="2018-03-02T07:38:06.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿锋">
-<meta name="twitter:description" content="爱打篮球的前端狗，爱做点饭的游戏迷。">
+<meta name="twitter:title" content="shaixuan">
+<meta name="twitter:description" content="基于vue的筛选功能">
+<meta name="twitter:image" content="http://img3.imgtn.bdimg.com/it/u=4050062348,563993855&fm=214&gp=0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="阿锋" type="application/atom+xml">
   
@@ -157,15 +159,101 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-xiangmu" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shaixuan
+    </h1>
+  
+
+        
+        <a href="/2018/02/19/xiangmu/" class="archive-article-date">
+  	<time datetime="2018-02-19T07:08:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-19</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>爱打篮球的前端狗，爱做点饭的游戏迷。</p>
-   <!-- UY BEGIN -->
-<p>   <div id="uyan_frame"></div><br>   <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2129606"></script><br>   <!-- UY END --></p>
+        <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基于vue的筛选功能</title>
 
+</head>
+<body>
+<div>
+    <img src="http://img3.imgtn.bdimg.com/it/u=4050062348,563993855&fm=214&gp=0.jpg" alt="">
+    <a id="more"></a>
+    <p>公司的项目 其中有个筛选功能由我来负责， 现在把我的筛选逻辑代码贴出来， 我个人觉得这套逻辑还是不错的</p>
+    <code>
+        <template>
+            <div class="List_left">
+                <div class="main_left">
+                    <div class="left-ylbj-l">
+                        <div class="left1-ylbj-l">
+
+                        </div>
+                        <div class="lefti-ylbj-l">
+                            <div class="left2-ylbj-l">
+                                <div class="xbiaoti-l">
+                                    <div></div><span>患者基础过滤</span>
+                                </div>
+                                <div class="list_box">
+                                    <span class="list_title">性别: </span>
+                                    <select v-model="form.sex_value" class="selected">
+                                        <option v-for="sex in sexs" :value="sex.value"></option>
+                                    </select>
+                                </div>
+                                <div class="list_box">
+                                    <span class="list_title">年龄: </span>
+                                    <select name="" class="selected" v-model="form.age_value">
+                                        <option v-for="age in ages" :value="age.value"></option>
+                                    </select>
+                                </div>
+                                <div class="list_box">
+                                    <span class="list_title">血型: </span>
+                                    <select name="" class="selected" v-model="form.blood_value">
+                                        <option v-for="blood in bloods" :value="blood.value"></option>
+                                    </select>
+                                </div>
+                                <div class="list_box">
+                                    <span class="list_title">护理级别: </span>
+                                    <select name="" class="selected" v-model="form.levels_value">
+                                        <option v-for="level in levels" :value="level.value"></option>
+                                    </select>
+                                </div>
+                                <div class="list_box">
+                                    <span class="list_title">病情级别: </span>
+                                    <select name="" class="selected" v-model="form.illness_value">
+                                        <option v-for="illnes in illness" :value="illnes.value"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="left2-ylbj-l">
+                                <div class="xbiaoti-l">
+                                    <div></div><span>患者病情过滤</span>
+                                </div>
+                                <div></div>
+                            </div>
+                            <div class="left2-ylbj-l">
+                                <div class="xbiaoti-l">
+                                    <div></div><span>统计基础过滤</span>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </code>
+</div>
+</body></html>
       
 
       
@@ -244,7 +332,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://guofengcrazy.github.io/about/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://guofengcrazy.github.io/2018/02/19/xiangmu/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -256,6 +344,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2017/12/29/vue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用vue.js搭建的项目应该怎样优化？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -288,7 +386,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
