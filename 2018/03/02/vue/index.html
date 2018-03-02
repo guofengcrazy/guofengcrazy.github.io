@@ -6,17 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://guofengcrazy.github.io">
-  <title>阿锋</title>
+  <title>浅谈vue项目优化 | 阿锋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="愿你出走半生，归来仍少年">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阿锋">
-<meta property="og:url" content="http://guofengcrazy.github.io/page/2/index.html">
+  <meta name="description" content="浅谈Vue项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈vue项目优化">
+<meta property="og:url" content="http://guofengcrazy.github.io/2018/03/02/vue/index.html">
 <meta property="og:site_name" content="阿锋">
-<meta property="og:description" content="愿你出走半生，归来仍少年">
+<meta property="og:description" content="浅谈Vue项目">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/005Yd2Thly1fl9jxqp7rlj30zk0k0ju1.jpg">
+<meta property="og:updated_time" content="2018-03-02T04:03:24.372Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿锋">
-<meta name="twitter:description" content="愿你出走半生，归来仍少年">
+<meta name="twitter:title" content="浅谈vue项目优化">
+<meta name="twitter:description" content="浅谈Vue项目">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/005Yd2Thly1fl9jxqp7rlj30zk0k0ju1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="阿锋" type="application/atom+xml">
   
@@ -156,83 +159,287 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-hello-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-vue" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/07/hello-1/">关于此博客搭建过程</a>
+    <h1 class="article-title" itemprop="name">
+      浅谈vue项目优化
     </h1>
   
 
         
-        <a href="/2016/12/07/hello-1/" class="archive-article-date">
-  	<time datetime="2016-12-07T03:16:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-07</time>
+        <a href="/2018/03/02/vue/" class="archive-article-date">
+  	<time datetime="2018-03-02T02:36:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>摘要: 关于搭建遇见的一些困难</p>
-<p>   在很久以前，就想用 Github Pages 建一个博客，于是就开始行动，当时选择的是 Github + Jkeyll ，昨天决定要重新做的时候也是用的 jekyll，但是遇到了很多无法解决的问题，比如说</p>
-<p> 在安装 Jekyll “gem install jekyll” 时报错了，上网查，原来是 gem 镜像的问题（Jekyll 是基于 Ruby 环境运行的），国外的镜像不能用，即使我再墙外也不行，上网查，最好换成国内的淘宝镜像。</p>
-<p> 换了淘宝的镜像之后，又报错了，上网查，原来是 Taobao Gem 源停止维护了，现在由 ruby-china 社区提供镜像服务。终于安装成功了，接下来就是建博客。</p>
-<p> 虽然工作量不大，但是被 Jekyll 折磨的心累，看了看其他的技术，本来用 Github Pages 建博就有很多方法，比如说 hexo ，而且 hexo 是基于 nodejs 环境的，于是毅然决然的转到了 hexo 党。果然没有失望，很快就做好了一个博客。</p>
-<p> 以上。</p>
+        
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浅谈Vue项目</title>
 
+</head>
+<body>
+  <div class="vue">
+      <img src="https://ws1.sinaimg.cn/large/005Yd2Thly1fl9jxqp7rlj30zk0k0ju1.jpg" alt="">
+      <a id="more"></a>
+      <p>
+          好久不写博文了，本文作为我使用1年多 vue 框架的经验小结，随便谈谈，且本文只适用于 vue-cli 初始化的项目或依赖于 webpack 打包的项目。
+      </p>
+      <p>
+          前几天看到大家说 vue 项目越大越难优化，带来很多痛苦，这是避免不了的，问题终究要解决，框架的性能是没有问题的，各大测试网站都有相关数据。下面进入正题
+      </p>
+      <div class="one">
+          <h3>基础优化</h3>
+          <p>
+              所谓的基础优化是任何 web 项目都要做的，并且是问题的根源。HTML，CSS，JS 是第一步要优化的点
+
+              </p><p>分别对应到 .vue 文件内的，</p>
+
+              <code class="code">
+                  &lt;template&gt;,&lt;style&gt;,&lt;script&gt;
+              </code>
+               <p>下面逐个谈下 vue 项目里都有哪些值得优化的点</p>
+          <p></p>
+          <h4>template</h4>
+          <p>
+              语义化标签，避免乱嵌套，合理命名属性等等标准推荐的东西就不谈了。
+          </p>
+          <p>
+              模板部分帮助我们展示结构化数据，vue 通过数据驱动视图，主要注意一下几点
+           </p>
+          <ul>
+              <li>
+                  v-show，v-if 用哪个？在我来看要分两个维度去思考问题，
+                  第一个维度是权限问题，只要涉及到权限相关的展示无疑要用 <code>v-if</code>
+                  第二个维度在没有权限限制下根据用户点击的频次选择，频繁切换的使用 <code>v-show</code>，不频繁切换的使用 <code>v-if</code>，
+                  这里要说的优化点在于减少页面中 dom 总数，我比较倾向于使用 <code>v-if</code> ，因为减少了 dom 数量，加快首屏渲染，
+                  至于性能方面我感觉肉眼看不出来切换的渲染过程，也不会影响用户的体验。
+              </li>
+              <li>
+                  不要在模板里面写过多的表达式与判断 <code> v-if="isShow && isAdmin && (a || b)"</code>
+                  这种表达式虽说可以识别，但是不是长久之计，
+                  当看着不舒服时，适当的写到 <code>methods</code> 和  <code>computed </code>里面封装成一个方法，
+                  这样的好处是方便我们在多处判断相同的表达式，
+                  其他权限相同的元素再判断展示的时候调用同一个方法即可。
+              </li>
+              <li>
+                  循环调用子组件时添加 key，key 可以唯一标识一个循环个体，
+                  可以使用例如 <code>item.id</code> 作为 key，
+                  假如数组数据是这样的 <code>['a' , 'b', 'c', 'a']</code>,使用 :key="item" 显然没有意义，
+                  更好的办法就是在循环的时候 <code>(item, index) in arr，</code>
+                  然后 :key="index"来确保 key 的唯一性。
+              </li>
+          </ul>
+          <h4>style</h4>
+             <ul>
+                 <li>将样式文件放在 vue 文件内还是外？讨论起来没有意义，重点是按模块划分，我的习惯是放在 vue 文件内部，方便写代码是在同一个文件里跳转上下对照，无论内外建议加上 <code>style</code>将样式文件锁住，目的很简单，再好用的标准也避免不了多人开发的麻烦，约定命名规则也可能会冲突，锁定区域后尽量采用简短的命名规则，不需要 <code> .header-title__text</code>   之类的 class，直接 .title 搞定。</li>
+                 <li>为了和上一条作区分，说下全局的样式文件，全局的样式文件，尽量抽象化，既然不在每一个组件里重复写，就尽量通用，这部分抽象做的越好说明你的样式文件体积越小，复用率越高。建议将复写组件库如 Element 样式的代码也放到全局中去。</li>
+                 <li>尽量不使用 float 布局，之前看到很多人封装了 <code>.fl -- float: left </code>到全局文件里去，然后又要 <code>.clear</code>，现在的浏览器还不至于弱到非要用 float 去兼容，完全可以 flex，guide 兼容性一般，功能其实 flex 布局都可以实现，float 会带来布局上的麻烦，用过的都知道不相信解释坑了。</li>
+             </ul>
+          <h4>script</h4>
+           <p>这部分也是最难优化的点，我尽量说一下我的意见吧</p>
+            <ul>
+                <li>多人开发时尽量保持每个组件 <code>export default {}</code> 内的方法顺序一致，方便查找对应的方法。我个人习惯 data、computed、components、钩子、watch。</li>
+                <li>data 里要说的就是初始化数据的结构尽量详细，命名清晰，简单易懂，避免无用的变量，<code>isEditing </code>实际可以代表两个状态，true 或 false，不要再去定义 <code>notEditing </code>来控制展示</li>
+                <li>props 父子组件传值时尽量 <code>:width="" :heigth=""</code> 不要 <code>:option={}</code>，细化的好处是只传需要修改的参数，在子组件 props 里加数据类型，是否必传，以及默认值，便于排查错误，让传值更严谨。</li>
+                <li>钩子理解好生命周期的含义就好，什么时间应该请求，什么时间注销方法，哪些方法需要注销。简单易懂，文档都有写。</li>
+                <li>metheds 中每一个方法一定要简单，只做一件事，尽量封装可复用的简短的方法，参数不易过多。如果十分依赖 lodash 开发，methed 看着会简洁许多，代价就是整体的 bundle 体积会大，假如项目仅仅用到小部分方法可以局部引入 loadsh，不想用 lodash 的话可以自己封装一个 util.js 文件</li>
+                <li>watch 和 computed 用哪个的问题看官网的例子，计算属性主要是做一层 filter 转换，切忌加一些调用方法进去，watch 的作用就是监听数据变化去改变数据或触发事件</li>
+            </ul>
+      </div>
+      <div class="two">
+           <h3>组件优化</h3>
+          <p>vue 的组件化深受大家喜爱，到底组件拆到什么程度算是合理，还要因项目大小而异，小型项目可以简单几个组件搞定，甚至不用 vuex，axios 等等，如果规模较大就要细分组件，越细越好，包括布局的封装，按钮，表单，提示框，轮播等，推荐看下 Element 组件库的代码，没时间写这么详细可以直接用 Element 库，分几点进行优化</p>
+           <ul>
+               <li>组件有明确含义，只处理类似的业务。复用性越高越好，配置性越强越好。</li>
+               <li>自己封装组件还是遵循配置 props 细化的规则。</li>
+               <li>组件分类，我习惯性的按照三类划分，page、page-item 和 layout，page 是路由控制的部分，page-item 属于 page 里各个布局块如 banner、side 等等，layout 里放置多个页面至少出现两次的组件，如 icon, scrollTop 等</li>
+           </ul>
+      </div>
+      <div class="three">
+          <h3>vue-router和vuex的优化</h3>
+          <p>vue-router 除了切换路由，用的最多的是处理权限的逻辑，关于权限的控制这里不赘述，相关 demo 和文章有许多，那么说到优化，值得一提的就是 <a href="https://router.vuejs.org/zh-cn/advanced/lazy-loading.html" target="_blank" rel="external">组件懒加载</a></p>
+          <p>官网例子如下</p>
+          <figure>
+              <table>
+                  <tbody>
+                    <tr>
+                        <td>
+                            <code>
+                                <div>1</div>
+                                 <div>2</div>
+                                 <div>3</div>
+                            </code>
+                        </td>
+                        <td class="code">
+                            <code>
+                                <div class="line">const Foo = r => require.ensure([], () => r(require('./Foo.vue')), 'group-foo')</div>
+                                <div class="line">
+                                    const Bar = r => require.ensure([], () => r(require('./Bar.vue')), 'group-foo')
+                                </div>
+                                <div class="line">
+                                    const Baz = r => require.ensure([], () => r(require('./Baz.vue')), 'group-foo')
+                                </div>
+                            </code>
+                        </td>
+                    </tr>
+                  </tbody>
+              </table>
+          </figure>
+          <p>这段代码将 Foo, Bar, Baz 三个组件打包进了名为 group-foo 的 chunk 文件，当然啦是 js 文件
+
+              其余部分正常写就可以，在网站加载时会自动解析需要加载哪个 chunk，虽然分别打包的总体积会变大，但是单看请求首屏速度的话，快了好多。</p>
+      </div>
+      <div class="four">
+           <h3>总结</h3>
+          <p>本文谈的优化可以解决部分性能问题，实际开发细节很多，总之按着规范写代码，团队的编码风格尽量统一，处理细节上多加思考，大部分性能问题都能迎刃而解。</p>
+      </div>
+
+  </div>
+</body>
+</html>
+<style>
+  body{
+      font-size:12px;
+      line-height:2px;
+      color:#555;
+  }
+  code{
+      padding: 2px 4px;
+      word-wrap: break-word;
+      color: #555;
+      background: #eee;
+      border-radius: 3px;
+      font-size: 11px;
+  }
+  ul li{
+      padding:5px;
+  }
+  a{
+      color: #555;
+      text-decoration: none;
+      outline: none;
+      border-bottom: 1px solid #999;
+      word-wrap: break-word;
+  }
+    .pre{
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #869194;
+        text-align: right;
+        background-color: #eff2f3;
+    }
+    .line{
+        background:#eee;
+    }
+</style>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hello</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/二级目录/" class="article-tag-list-link color5">二级目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/07/hello-1/">展开全文 >></a>
-        </p>
       
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://guofengcrazy.github.io/2018/03/02/vue/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
-
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/05/s/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript中call，apply，bind之间的区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
@@ -240,91 +447,10 @@
 
 
   
-    <article id="post-hello" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/05/hello/">测试文章。</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        
-        <a href="/2016/12/05/hello/" class="archive-article-date">
-  	<time datetime="2016-12-05T06:16:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要:第一个文章。</p>
-<pre><code>一直想搭建一个github博客，之前由于电脑配置环境的问题。导致git无法顺利运行，只好手写然后一点点上传，相当麻烦。 最近终于决定要将其弄好，果然功夫不负有心人，一天时间不到，搭建完成，
-</code></pre><p> 以后我会在这里写一些工作上的心得，或者分享一些个人觉得不错的文章。</p>
-<p>以上。</p>
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hello</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/二级目录/" class="article-tag-list-link color5">二级目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/05/hello/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
-  
 
 
           </div>
@@ -346,8 +472,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
